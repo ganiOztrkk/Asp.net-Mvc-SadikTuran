@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BlogMvcApp.Models.CategoryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Category List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new{@class="btn btn-primary"})
+</p>
+<table class="table table-bordered table-hover" style="text-align: center">
+    <tr>
+        <th style="width: 80%">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th style="width: 10%">
+            @Html.DisplayNameFor(model => model.BlogQuantity)
+        </th>
+        <th style="width: 100px">
+            Edit
+        </th>
+        <th style="width: 100px">
+            Delete
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.CategoryName
+        </td>
+        <td>
+            @item.BlogQuantity
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

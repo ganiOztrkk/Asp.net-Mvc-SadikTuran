@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BlogMvcApp.Models.BlogViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="blog">
+        <h3 class="page-header">
+            @item.Title
+        </h3>
+        <p>
+            <span class="glyphicon glyphicon-time"></span>
+            @item.PublishDate
+        </p>
+        <hr />
+        <img class="img-responsive" src="https://placehold.co/900x300" alt="" />
+        <hr />
+        <p>
+            @item.Description
+        </p>
+        @Html.ActionLink("Daha Fazla...", "Details", "Blog", new { id = @item.Id }, new { @class = "btn btn-primary" })
+    </div>
+}
+
+@section RightCol
+{
+
+    <div class="well">
+        <h4>Blog Search</h4>
+        <div class="input-group">
+            <input type="text" class="form-control" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+    @{ Html.RenderAction("CategoryList", "Category"); }
+}
